@@ -5,13 +5,20 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Testing4
 {
     [TestClass]
-    public class tstAddress
+    public class tstOrder
     {
         [TestMethod]
-        public void TestMethod1()
+        public void InstanceOK()
         {
             clsOrder Anorder = new clsOrder();
             Assert.IsNotNull(Anorder);
         }
     }
+        
+   
+
+  
+
+
+
 }
