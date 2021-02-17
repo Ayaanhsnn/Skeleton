@@ -110,7 +110,7 @@ namespace Testing2
             //Boolean variable to store the results of validation
             Boolean Found = false;
             //create some test data to use with the method 
-            Int32 CustomerId = 21;
+            Int32 CustomerId = 8;
             //invoke the method
             Found = AnCustomer.Find(CustomerId);
             //test to see if the result is true 
@@ -123,9 +123,9 @@ namespace Testing2
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 21;
+            Int32 CustomerId = 8;
             Found = AnCustomer.Find(CustomerId);
-            if (AnCustomer.CustomerId != 21 )
+            if (AnCustomer.CustomerId != 8 )
             {
                 OK = false;
             }
@@ -140,7 +140,7 @@ namespace Testing2
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 21;
+            Int32 CustomerId = 8;
             Found = AnCustomer.Find(CustomerId);
             if (AnCustomer.DateOfBirth != Convert.ToDateTime("21/02/2019"))
             {
@@ -159,9 +159,9 @@ namespace Testing2
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 21;
+            Int32 CustomerId = 8;
             Found = AnCustomer.Find(CustomerId);
-            if (AnCustomer.Username != "Jackson3")
+            if (AnCustomer.Username != "TestUser")
             {
                 OK = false;
             }
@@ -177,9 +177,9 @@ namespace Testing2
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 21;
+            Int32 CustomerId = 8;
             Found = AnCustomer.Find(CustomerId);
-            if (AnCustomer.Password != "PassJackson2")
+            if (AnCustomer.Password != "TestPass")
             {
                 OK = false;
             }
@@ -194,9 +194,9 @@ namespace Testing2
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 21;
+            Int32 CustomerId = 8;
             Found = AnCustomer.Find(CustomerId);
-            if (AnCustomer.Address != "23 Wrong Lane")
+            if (AnCustomer.Address != "Test Address")
             {
                 OK = false;
             }
@@ -211,7 +211,7 @@ namespace Testing2
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 21;
+            Int32 CustomerId = 8;
             Found = AnCustomer.Find(CustomerId);
             if (AnCustomer.ReceiveMail != true)
             {
