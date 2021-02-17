@@ -94,15 +94,30 @@ namespace ClassLibrary
 
         public bool Find(int CustomerId)
         {
-            mCustomerId = 21;
-            mDateOfBirth = Convert.ToDateTime("21/02/2019");
-            mUsername = "Jackson3";
-            mPassword = "PassJackson2";
-            mAddress = "23 Wrong Lane";
-            mReceiveMail = true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerId", CustomerId);
+            DB.Execute("sproc_tblCustomerDetails_FilterByCustomerId");
+            if (DB.Count == 1)
+            {
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mDateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[0]["DateOfBirth"]);
+                mUsername = Convert.ToString(DB.DataTable.Rows[0]["Username"]);
+                mPassword = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
+                mAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
+                mReceiveMail = Convert.ToBoolean(DB.DataTable.Rows[0]["ReceiveMail"]);
 
-            //always true
-            return true;
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+
         }
+
+
+
+
     }
 }
