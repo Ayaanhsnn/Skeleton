@@ -22,6 +22,7 @@ namespace ClassLibrary
             set
             {
                 //this line of code allows data into the property
+
                 mCustomerId = value;
             }
        
