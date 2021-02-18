@@ -11,6 +11,26 @@
     <form id="form1" runat="server">
         <div>
         </div>
+        <asp:Label ID="lblOrderNo" runat="server" Text="Order Number"></asp:Label>
+        <asp:TextBox ID="txtOrderNo" runat="server"></asp:TextBox>
+        <p>
+            <asp:Label ID="lblDatePurchased" runat="server" Text="Date Purchased"></asp:Label>
+            <asp:TextBox ID="txtDatePurchased" runat="server"></asp:TextBox>
+        </p>
+        <asp:Label ID="lblDeliveryDate" runat="server" Text="Delivery Date"></asp:Label>
+        <asp:TextBox ID="txtDeliveryDate" runat="server"></asp:TextBox>
+        <p>
+            <asp:Label ID="lblAddress" runat="server" Text="Address"></asp:Label>
+            <asp:TextBox ID="txtAddress" runat="server"></asp:TextBox>
+        </p>
+        <asp:CheckBox ID="chkClothesAvailable" runat="server" Text="ClothesAvailble" />
+        <p>
+            <asp:Label ID="lblError" runat="server"></asp:Label>
+        </p>
+        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
+        <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+        <p>
+            &nbsp;</p>
     </form>
 </body>
 </html>
