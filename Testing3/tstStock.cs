@@ -63,7 +63,102 @@ namespace Testing3
             AStock.Quantity = TestData;
             Assert.AreEqual(AStock.Quantity, TestData);
         }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Int32 StockNo = 1;
+            Found = AStock.Find(StockNo);
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestStockNoFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 StockNo = 21;
+            Found = AStock.Find(StockNo);
+            if (AStock.StockNo != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestOrderNoFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderNo = 21;
+            Found = AStock.Find(OrderNo);
+            if (AStock.OrderNo != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void StockDescriptionFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 StockNo = 21;
+            Found = AStock.Find(StockNo);
+            if (AStock.StockDesc != "Medium”)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestQuantityFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Quantity = 21;
+            Found = AStock.Find(Quantity);
+            if (AStock.Quantity != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestDatePurchasedFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 StockNo = 21;
+            Found = AStock.Find(StockNo);
+            if (AStock.DatePurch != Convert.ToDateTime("11/09/2020"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestAvailabilityFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 StockNo = 21;
+            Found = AStock.Find(StockNo);
+            if (AStock.Availability != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
 
 
+        }
     }
 }
