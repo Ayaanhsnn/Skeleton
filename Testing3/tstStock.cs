@@ -103,14 +103,14 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void StockDescriptionFound()
+        public void StockDescFound()
         {
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StockNo = 21;
+            Int32 StockNo = 18;
             Found = AStock.Find(StockNo);
-            if (AStock.StockDesc != "Medium”)
+            if (AStock.StockDesc != "small")
             {
                 OK = false;
             }
