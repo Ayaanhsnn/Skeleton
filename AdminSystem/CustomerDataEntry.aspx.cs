@@ -29,4 +29,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //Navigate to the viewer page
         Response.Redirect("CustomerViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsCustomer AnCustomer = new clsCustomer();
+        Int32 CustomerId;
+        Boolean Found = false;
+        CustomerId = Convert.ToInt32(txtCustomerId.Text);
+        Found = AnCustomer.Find(CustomerId);
+        if (Found == true)
+        {
+            txtUsername.Text = AnCustomer.Username;
+            txtPassword.Text = AnCustomer.Password;
+            txtAddress.Text = AnCustomer.Address;
+            txtDateOfBirth.Text = AnCustomer.DateOfBirth.ToString();
+        }
+    }
 }
