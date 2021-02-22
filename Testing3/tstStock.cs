@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Testing3
 {
     [TestClass]
-    public class tstStock
+    public class TstStock
     {
         [TestMethod]
         public void InstanceOK()
@@ -95,7 +95,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 OrderNo = 21;
             Found = AStock.Find(OrderNo);
-            if (AStock.OrderNo != 21)
+            if (AStock.OrderNo != 18)
             {
                 OK = false;
             }
@@ -108,9 +108,9 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StockNo = 18;
+            Int32 StockNo = 10;
             Found = AStock.Find(StockNo);
-            if (AStock.StockDesc != "small")
+            if (AStock.StockDesc != "Small")
             {
                 OK = false;
             }
@@ -120,8 +120,8 @@ namespace Testing3
         public void TestQuantityFound()
         {
             clsStock AStock = new clsStock();
-            Boolean Found = false;
-            Boolean OK = true;
+            Boolean Found = true;
+            Boolean OK = false;
             Int32 Quantity = 21;
             Found = AStock.Find(Quantity);
             if (AStock.Quantity != 21)
@@ -131,7 +131,7 @@ namespace Testing3
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestDatePurchasedFound()
+        public void TestDatePurchFound()
         {
             clsStock AStock = new clsStock();
             Boolean Found = false;
