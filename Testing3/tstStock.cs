@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Testing3
 {
     [TestClass]
-    public class TstStock
+    public class tstStock
     {
         [TestMethod]
         public void InstanceOK()
@@ -18,7 +18,7 @@ namespace Testing3
         public void StockNoOK()
         {
             clsStock AStock = new clsStock();
-            Int32 TestData = 1;
+            Int32 TestData = 21;
             AStock.StockNo = TestData;
             Assert.AreEqual(AStock.StockNo, TestData);
         }
@@ -26,7 +26,7 @@ namespace Testing3
         public void OrderNoOK()
         {
             clsStock AStock = new clsStock();
-            Int32 TestData = 1;
+            Int32 TestData = 21;
             AStock.OrderNo = TestData;
             Assert.AreEqual(AStock.OrderNo, TestData);
         }
@@ -59,7 +59,7 @@ namespace Testing3
         public void QuantityOK()
         {
             clsStock AStock = new clsStock();
-            Int32 TestData = 1;
+            Int32 TestData = 21;
             AStock.Quantity = TestData;
             Assert.AreEqual(AStock.Quantity, TestData);
         }
@@ -68,7 +68,7 @@ namespace Testing3
         {
             clsStock AStock = new clsStock();
             Boolean Found = false;
-            Int32 StockNo = 1;
+            Int32 StockNo = 21;
             Found = AStock.Find(StockNo);
             Assert.IsTrue(Found);
         }
@@ -95,7 +95,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 OrderNo = 21;
             Found = AStock.Find(OrderNo);
-            if (AStock.OrderNo != 18)
+            if (AStock.OrderNo != 21)
             {
                 OK = false;
             }
@@ -108,7 +108,7 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StockNo = 10;
+            Int32 StockNo = 21;
             Found = AStock.Find(StockNo);
             if (AStock.StockDesc != "Small")
             {
@@ -122,8 +122,8 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = true;
             Boolean OK = false;
-            Int32 Quantity = 21;
-            Found = AStock.Find(Quantity);
+            Int32 StockNo = 21;
+            Found = AStock.Find(StockNo);
             if (AStock.Quantity != 21)
             {
                 OK = false;

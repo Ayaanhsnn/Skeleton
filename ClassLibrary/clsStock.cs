@@ -81,11 +81,11 @@ namespace ClassLibrary
         public bool Find(int StockNo)
         {
             mStockNo = 21;
-            mOrderNo = 22;
-            mStockDesc = "Large";
-            mDatePurch = Convert.ToDateTime("16/9/2015");
+            mOrderNo = 21;
+            mStockDesc = "Small";
+            mDatePurch = Convert.ToDateTime("11/09/2020");
             mAvailability = true;
-            mQuantity = 20;
+            mQuantity = 21;
 
             return true;
         }
