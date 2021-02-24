@@ -17,17 +17,41 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsCustomer
         clsCustomer AnCustomer = new clsCustomer();
-        //Capture the customer Id
-        AnCustomer.CustomerId = Convert.ToInt32(txtCustomerId.Text);
-        AnCustomer.Username = txtUsername.Text;
-        AnCustomer.Password = txtPassword.Text;
-        AnCustomer.Address = txtAddress.Text;
-        AnCustomer.DateOfBirth = Convert.ToDateTime(txtDateOfBirth.Text);
-        AnCustomer.ReceiveMail = chkReceiveMail.Checked;
-        //store the address in the session object
-        Session["AnCustomer"] = AnCustomer;
-        //Navigate to the viewer page
-        Response.Redirect("CustomerViewer.aspx");
+        
+        //capture the username
+        string Username = txtUsername.Text;
+        //capture the password
+        string Password = txtPassword.Text;
+        //capture the address
+        string Address = txtAddress.Text;
+        //capture the dateofbirth
+        string DateOfBirth = txtDateOfBirth.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = AnCustomer.Valid(Username, Password, Address, DateOfBirth);
+        if (Error == "")
+        {
+            //capture the username
+            AnCustomer.Username = Username;
+            //capture the password
+            AnCustomer.Password = Password;
+            //capture the address
+            AnCustomer.Address = Address;
+            //capture the dateofbirth
+            AnCustomer.DateOfBirth = Convert.ToDateTime(DateOfBirth);
+            //store the customer in the session object
+            Session["AnCustomer"] = AnCustomer;
+            //redirect to the viewer page
+            Response.Write("CustomerViewer.aspx");
+            
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
+
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
