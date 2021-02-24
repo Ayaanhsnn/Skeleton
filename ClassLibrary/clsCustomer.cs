@@ -117,8 +117,81 @@ namespace ClassLibrary
 
         }
 
+        public string Valid(string username, string password, string address, string dateOfBirth)
+        {
+            //create a string variable tp store the error
+            String Error = "";
+            //create a temporary variable to store date values
+            DateTime DateTemp;
+            //if the Username is blank
+            if (username.Length == 0)
+            {
+                //record the error
+                Error = Error + "The username may not be blank : ";
+            }
+
+            //if the username is greater than 50 characters
+            if (username.Length > 50)
+            {
+                //record the error
+
+                Error = Error + "The username must be less than 50 characters : ";
+            }
+            try
+            {
 
 
+                //copy the dateOfBirth value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dateOfBirth);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
 
+                }
+                //check to see if the date is greater than today's date 
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "the date was not a valid date : ";
+            }
+            //if the password is blank
+            if (password.Length == 0)
+            {
+                //record
+                Error = Error + " The password may not be blank : ";
+            
+
+            }
+            //if the password is greater than 50 characters
+            if (password.Length > 50)
+            {
+                //record the error
+                Error = Error + "The password must be less than 50 characters : ";
+            }
+
+            //if the address is blank
+            if (address.Length == 0)
+            {
+                //record
+                Error = Error + " The address may not be blank : ";
+            }
+
+            //if the address is greater than 50 characters
+            if (address.Length > 50)
+            {
+                //record the error
+                Error = Error + "The address must be less than 50 characters : ";
+            }
+
+            //return any error messages
+            return Error;
+        }
     }
 }
