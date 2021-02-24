@@ -29,12 +29,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStock AStock = new clsStock();
         AStock.StockNo = Convert.ToInt32(txtStockNo.Text);
         AStock.OrderNo = Convert.ToInt32(txtOrderNo.Text);
-        AStock.StockDesc = txtStockDesc.Text;
-        AStock.DatePurch = Convert.ToDateTime(txtDatePurch.Text);
+        AStock.StockDescription = txtStockDesc.Text;
+        AStock.DatePurchased = Convert.ToDateTime(txtDatePurch.Text);
         AStock.Availability = chkAvailability.Checked;
         AStock.Quantity = Convert.ToInt32(txtQuantity.Text);
         Session["AStock"] = AStock;
         Response.Redirect("StockViewer.aspx");
 
+    }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsStock AStock = new clsStock();
+        Int32 StockNo;
+        Boolean Found = false;
+        StockNo = Convert.ToInt32(txtStockNo.Text);
+        Found = AStock.Find(StockNo);
+        if (Found == true)
+        {
+            txtStockNo.Text = AStock.StockNo.ToString();
+            txtOrderNo.Text = AStock.OrderNo.ToString();
+            txtStockDesc.Text = AStock.StockDescription;
+            txtDatePurch.Text = AStock.DatePurchased.ToString();
+            txtQuantity.Text = AStock.Quantity.ToString();
+
+        }
     }
 }

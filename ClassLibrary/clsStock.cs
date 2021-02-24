@@ -2,7 +2,7 @@
 
 namespace ClassLibrary
 {
-    public class  clsStock
+    public class clsStock
     {
         private Int32 mStockNo;
         public int StockNo
@@ -41,28 +41,28 @@ namespace ClassLibrary
                 mQuantity = value;
             }
         }
-        private string mStockDesc;
-        public string StockDesc
+        private string mStockDescription;
+        public string StockDescription
         {
             get
             {
-                return mStockDesc;
+                return mStockDescription;
             }
             set
             {
-                mStockDesc = value;
+                mStockDescription = value;
             }
         }
-        private DateTime mDatePurch;
-        public DateTime DatePurch
+        private DateTime mDatePurchased;
+        public DateTime DatePurchased
         {
             get
             {
-                return mDatePurch;
+                return mDatePurchased;
             }
             set
             {
-                mDatePurch = value;
+                mDatePurchased = value;
             }
         }
         private Boolean mAvailability;
@@ -80,14 +80,28 @@ namespace ClassLibrary
 
         public bool Find(int StockNo)
         {
-            mStockNo = 21;
-            mOrderNo = 21;
-            mStockDesc = "Small";
-            mDatePurch = Convert.ToDateTime("11/09/2020");
-            mAvailability = true;
-            mQuantity = 21;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StockNo", StockNo);
+            DB.Execute("sproc_tblStock_FilterByStockNo");
 
-            return true;
+            if (DB.Count == 1)
+            {
+
+
+                mStockNo = Convert.ToInt32(DB.DataTable.Rows[0]["StockNo"]);
+                mOrderNo = Convert.ToInt32(DB.DataTable.Rows[0]["OrderNo"]);
+                mStockDescription = Convert.ToString(DB.DataTable.Rows[0]["StockDescription"]);
+                mDatePurchased = Convert.ToDateTime(DB.DataTable.Rows[0]["DatePurchased"]);
+                mAvailability = Convert.ToBoolean(DB.DataTable.Rows[0]["Availability"]);
+                mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
+
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

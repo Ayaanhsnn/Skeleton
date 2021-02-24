@@ -36,15 +36,15 @@ namespace Testing3
         {
             clsStock AStock = new clsStock();
             string TestData = "large";
-            AStock.StockDesc = TestData;
-            Assert.AreEqual(AStock.StockDesc, TestData);
+            AStock.StockDescription = TestData;
+            Assert.AreEqual(AStock.StockDescription, TestData);
         }
         public void DatePurchasedOK()
         {
             clsStock AStock = new clsStock();
             DateTime TestData = DateTime.Now.Date;
-            AStock.DatePurch = TestData;
-            Assert.AreEqual(AStock.DatePurch, TestData);
+            AStock.DatePurchased = TestData;
+            Assert.AreEqual(AStock.DatePurchased, TestData);
         }
         [TestMethod]
         public void AvailabilityOK()
@@ -59,7 +59,7 @@ namespace Testing3
         public void QuantityOK()
         {
             clsStock AStock = new clsStock();
-            Int32 TestData = 21;
+            Int32 TestData = 6;
             AStock.Quantity = TestData;
             Assert.AreEqual(AStock.Quantity, TestData);
         }
@@ -68,7 +68,7 @@ namespace Testing3
         {
             clsStock AStock = new clsStock();
             Boolean Found = false;
-            Int32 StockNo = 21;
+            Int32 StockNo = 6;
             Found = AStock.Find(StockNo);
             Assert.IsTrue(Found);
         }
@@ -79,9 +79,9 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StockNo = 21;
+            Int32 StockNo = 6;
             Found = AStock.Find(StockNo);
-            if (AStock.StockNo != 21)
+            if (AStock.StockNo != 6)
             {
                 OK = false;
             }
@@ -93,9 +93,9 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderNo = 21;
-            Found = AStock.Find(OrderNo);
-            if (AStock.OrderNo != 21)
+            Int32 StockNo = 6;
+            Found = AStock.Find(StockNo);
+            if (AStock.OrderNo != 8)
             {
                 OK = false;
             }
@@ -103,14 +103,14 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void StockDescFound()
+        public void StockDescriptionFound()
         {
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StockNo = 21;
+            Int32 StockNo = 6;
             Found = AStock.Find(StockNo);
-            if (AStock.StockDesc != "Small")
+            if (AStock.StockDescription != "Small")
             {
                 OK = false;
             }
@@ -118,27 +118,29 @@ namespace Testing3
         }
         [TestMethod]
         public void TestQuantityFound()
-        {
+        { 
             clsStock AStock = new clsStock();
-            Boolean Found = true;
-            Boolean OK = false;
-            Int32 StockNo = 21;
-            Found = AStock.Find(StockNo);
-            if (AStock.Quantity != 21)
+        Boolean Found = false;
+        Boolean OK = true;
+        Int32 StockNo = 6;
+        Found = AStock.Find(StockNo);
+            if (AStock.Quantity != 7)
+
             {
                 OK = false;
+                        
             }
-            Assert.IsTrue(OK);
+    Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestDatePurchFound()
+        public void TestDatePurchasedFound()
         {
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StockNo = 21;
+            Int32 StockNo = 6;
             Found = AStock.Find(StockNo);
-            if (AStock.DatePurch != Convert.ToDateTime("11/09/2020"))
+            if (AStock.DatePurchased != Convert.ToDateTime("08/06/2020"))
             {
                 OK = false;
             }
@@ -150,7 +152,7 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StockNo = 21;
+            Int32 StockNo = 6;
             Found = AStock.Find(StockNo);
             if (AStock.Availability != true)
             {
