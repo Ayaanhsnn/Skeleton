@@ -95,14 +95,22 @@ namespace ClassLibrary
 
         public bool Find(int OrderNo)
         {
-            //set the private data members to the test data value
-            mOrderNo = 21;
-            mDeliveryDate= Convert.ToDateTime("16/9/2020");
-            mAddress = "102 red street Leicester";
-            mDatePurchased = Convert.ToDateTime("16/9/2015");
-            mClothesAvailable = true;
-            //always return true
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderNo", OrderNo);
+            DB.Execute("sproc_tblOrder_FilterByOrderNo");
+            if (DB.Count == 1)
+            {
+                mOrderNo = Convert.ToInt32(DB.DataTable.Rows[0]["OrderNo"]);
+                mAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
+                mDeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[0]["DeliveryDate"]);
+                mDatePurchased = Convert.ToDateTime(DB.DataTable.Rows[0]["DatePurchased"]);
+                mClothesAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["ClothesAvailable"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 
