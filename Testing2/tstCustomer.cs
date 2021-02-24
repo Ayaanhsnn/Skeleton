@@ -24,6 +24,7 @@ namespace Testing2
             clsCustomer AnCustomer = new clsCustomer();
             //test to see that it exists
             Assert.IsNotNull(AnCustomer);
+        
         }
 
         [TestMethod]
