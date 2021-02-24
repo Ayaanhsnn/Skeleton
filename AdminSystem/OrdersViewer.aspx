@@ -8,6 +8,13 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        ClsOrder AnOrder = new ClsOrder();
+        AnOrder = (ClsOrder) Session["AnOrder"];
+        Response.Write(AnOrder.Address);
+        Response.Write(AnOrder.ClothesAvailable);
+        Response.Write(AnOrder.DatePurchased);
+        Response.Write(AnOrder.DeliveryDate);
+        Response.Write(AnOrder.OrderNo);
         <div>
         </div>
     </form>
