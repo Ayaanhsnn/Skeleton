@@ -103,5 +103,75 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string orderNo, string stockDescription, string datePurchased, string quantity)
+        {
+            DateTime DateTemp;
+            
+            //create a string variable to store the error
+            String Error = "";
+            Int32 OrderNoTemp;
+            // if the OrderNo is blank
+
+            OrderNoTemp = Convert.ToInt32(orderNo);
+            if (OrderNoTemp < 0)
+            {
+                //record the error
+                Error = Error + "The orderNo can not be below 0";
+            }
+            if (OrderNoTemp > Int32.MaxValue)
+            {
+                Error = Error + "The orderNo can not be above 2147483647 (MaxValue) : ";
+
+            }
+                // stock description 
+                if (stockDescription.Length == 0)
+                {
+                    Error = Error + "The stock description may not be blank : ";
+                }
+                if (stockDescription.Length > 50)
+                {
+                    Error = Error + "The stock description must be less than 50 characters : ";
+                } 
+            // date purchased 
+            try
+            {
+
+
+                DateTemp = Convert.ToDateTime(datePurchased);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+            // quantity
+            Int32 QuantityTemp;
+
+            QuantityTemp = Convert.ToInt32(orderNo);
+            if (QuantityTemp < 0)
+            {
+                Error = Error + "The quantity can not be below 0";
+            }
+            if (QuantityTemp > Int32.MaxValue)
+            {
+                Error = Error + "The quantity can not be above 2147483647 (MaxValue) : ";
+
+            }
+
+            //return any error messages
+            return Error;
+
+
+            }
+        }
+
     }
-}
+
