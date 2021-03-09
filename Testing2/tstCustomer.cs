@@ -16,7 +16,7 @@ namespace Testing2
         string DateOfBirth = DateTime.Now.Date.ToString();
 
 
-
+       
         [TestMethod]
         public void InstanceOK()
         {

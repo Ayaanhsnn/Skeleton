@@ -68,11 +68,11 @@ namespace ClassLibrary
             {
                 //return the private data
                 return mAddress;
-             }
+            }
             set
             {
                 //set the private data
-                 mAddress = value;
+                mAddress = value;
             }
         }
 
@@ -90,7 +90,7 @@ namespace ClassLibrary
             {
                 //set the private data
                 mDeliveryDate = value;
-             }
+            }
         }
 
         public bool Find(int OrderNo)
@@ -113,7 +113,38 @@ namespace ClassLibrary
             }
         }
 
+        public string Valid(string Address, string DeliveryDate, string DatePurchased)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            if (Address.Length == 0)
+            {
+                Error = Error + "The address may not be blank";
+            }
+            //if the town is too long
+            if (Address.Length > 50)
+            {
+                //record the error
+                Error = Error + "The address must be less than 50 characters : ";
+            }
+            DateTemp = Convert.ToDateTime(DeliveryDate);
+            if (DateTemp < DateTime.Now.Date)
+            {
+                //record the error
+                Error = Error + "The date cannot be in the past : ";
+            }
+            //check to see if the date is greater than today's date
+            if (DateTemp > DateTime.Now.Date)
+            {
+                //record the error
+                Error = Error + "The date cannot be in the future";
+            }
 
+            //return any error messages
+            return Error;
+
+        }
+                  
+        }
 
     }
-}
