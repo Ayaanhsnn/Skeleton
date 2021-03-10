@@ -16,7 +16,8 @@ namespace Testing2
         string DateOfBirth = DateTime.Now.Date.ToString();
 
 
-       
+
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -24,8 +25,9 @@ namespace Testing2
             clsCustomer AnCustomer = new clsCustomer();
             //test to see that it exists
             Assert.IsNotNull(AnCustomer);
-        
+
         }
+
 
         [TestMethod]
         public void ReceiveMailPropertyOK()
@@ -53,6 +55,7 @@ namespace Testing2
             //test to see that the two values are the same 
             Assert.AreEqual(AnCustomer.DateOfBirth, TestData);
 
+            
         }
 
         [TestMethod]
@@ -131,11 +134,17 @@ namespace Testing2
         [TestMethod]
         public void TestCustomerIdFound()
         {
+            //create an instance of the class we want to create 
             clsCustomer AnCustomer = new clsCustomer();
+            //boolean variable to store the result of the search
             Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
+            //create some test data to use with the method
             Int32 CustomerId = 8;
+            //invoke the method
             Found = AnCustomer.Find(CustomerId);
+            //check the customerId
             if (AnCustomer.CustomerId != 8 )
             {
                 OK = false;
@@ -148,11 +157,17 @@ namespace Testing2
         [TestMethod]
         public void TestDateOfBirthFound()
         {
+            //create an instance of the class we want to create
             clsCustomer AnCustomer = new clsCustomer();
+            //boolean variable to store the result of the search
             Boolean Found = false;
+            //boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
+            //create some test data to use with the method
             Int32 CustomerId = 8;
+            //invoke the method
             Found = AnCustomer.Find(CustomerId);
+            //check the property
             if (AnCustomer.DateOfBirth != Convert.ToDateTime("21/02/2019"))
             {
                 OK = false;
@@ -167,11 +182,17 @@ namespace Testing2
         [TestMethod]
         public void TestUsernameFound()
         {
+            //create an instance of the class we want to create 
             clsCustomer AnCustomer = new clsCustomer();
+            //boolean variable to store the result of the search
             Boolean Found = false;
+            //boolean variable to record if data is OK(assume it is )
             Boolean OK = true;
+            //create some test data to use with the method
             Int32 CustomerId = 8;
+            //invoke the method
             Found = AnCustomer.Find(CustomerId);
+            //check the property
             if (AnCustomer.Username != "TestUser")
             {
                 OK = false;
@@ -185,11 +206,17 @@ namespace Testing2
         [TestMethod]
         public void TestPasswordFound()
         {
+            //create an instance of the class we want to create
             clsCustomer AnCustomer = new clsCustomer();
+            //boolean variable to store the result of the search 
             Boolean Found = false;
+            //boolean variable to record if data is OK(assume it is)
             Boolean OK = true;
+            //create some test data to use with the method
             Int32 CustomerId = 8;
+            //invoke the method
             Found = AnCustomer.Find(CustomerId);
+            //check the property
             if (AnCustomer.Password != "TestPass")
             {
                 OK = false;
@@ -202,11 +229,17 @@ namespace Testing2
         [TestMethod]
         public void TestAddressFound()
         {
+            //create an instance of the class we want to create 
             clsCustomer AnCustomer = new clsCustomer();
+            //boolean variable to store the result of the search
             Boolean Found = false;
+            //boolean variable to record if the data is OK (Assume it is)
             Boolean OK = true;
+            //create some test data to use with the method
             Int32 CustomerId = 8;
+            //invoke the method
             Found = AnCustomer.Find(CustomerId);
+            //check the address
             if (AnCustomer.Address != "Test Address")
             {
                 OK = false;
@@ -217,13 +250,19 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void TestReceiveMail()
+        public void TestReceiveMailFound()
         {
+            //create an instance of the class we want to create
             clsCustomer AnCustomer = new clsCustomer();
+            //boolean variable to store the result of the search
             Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
+            //create some test data to use with the method
             Int32 CustomerId = 8;
+            //invoke the method
             Found = AnCustomer.Find(CustomerId);
+            //check the property
             if (AnCustomer.ReceiveMail != true)
             {
                 OK = false;
@@ -740,6 +779,7 @@ namespace Testing2
             Error = AnCustomer.Valid(Username, Password, Address, DateOfBirth);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
+
         }
     }
 }

@@ -4,7 +4,7 @@ namespace ClassLibrary
 {
     public class clsCustomer
     {
-        //private data member for the customer id property
+        //private data member for the properties
         private Int32 mCustomerId;
         private DateTime mDateOfBirth;
         private String mUsername;
@@ -27,66 +27,76 @@ namespace ClassLibrary
             }
        
         }
-
+        //public property for date of birth
         public DateTime DateOfBirth
         {
             get
             {
+                //return the private data
                 return mDateOfBirth;
             }
             set
             {
+                //set the private data
                 mDateOfBirth = value;
             }
         }
 
-
+        //public property for the username
         public string Username
         {
             get
             {
+                //return the private data
                 return mUsername;
             }
             set
             {
+                //set the private data
                 mUsername = value;
             }
         }
 
-
+        //public property for password
         public string Password
         {
             get
             {
+                //return the private data
                 return mPassword;
             }
             set
             {
+                //set the private data
                 mPassword = value;
             }
 
         }
-
+        //public property for Address
         public string Address
         {
             get
             {
+                //return the private data
                 return mAddress;
             }
             set
             {
+                //set the private data
                 mAddress = value;
             }
         }
-
+        //public property for ReceiveMail
         public bool ReceiveMail
         {
             get
             {
+                //return the private data
                 return mReceiveMail;
             }
             set
             {
+                //set the private data
                 mReceiveMail = value;
             }
         }
@@ -95,23 +105,29 @@ namespace ClassLibrary
 
         public bool Find(int CustomerId)
         {
+            //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the customer id to search for
             DB.AddParameter("@CustomerId", CustomerId);
+            //execute the stored procedure
             DB.Execute("sproc_tblCustomerDetails_FilterByCustomerId");
+            //if one record is found (there should be either one or zero)
             if (DB.Count == 1)
             {
+                //copy the data from the database to the private data members
                 mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
                 mDateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[0]["DateOfBirth"]);
                 mUsername = Convert.ToString(DB.DataTable.Rows[0]["Username"]);
                 mPassword = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
                 mAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
                 mReceiveMail = Convert.ToBoolean(DB.DataTable.Rows[0]["ReceiveMail"]);
-
+                //return that everything worked OK
                 return true;
             }
-
+            //if no record was found
             else
             {
+                //return false indicating a problem
                 return false;
             }
 
