@@ -1,15 +1,14 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StockList.aspx.cs" Inherits="_1_List" %>
 
 <!DOCTYPE html>
+<script runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-        </div>
-    </form>
-</body>
-</html>
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+</script>
+<form id="StockList" runat="server">
+        <div id="StockList">
+            </div>
+        <asp:StockList ID="StockList" runat="server" Height="229px" Width="492px"></asp:StockList>
