@@ -6,11 +6,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClassLibrary;
 
-public partial class _Default : System.Web.UI.Page
+public partial class StockList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(IsPostBack == false)
+        if (IsPostBack == false)
         {
             DisplayStock();
         }
@@ -26,8 +26,8 @@ public partial class _Default : System.Web.UI.Page
         lstStockList.DataBind();
     }
 
-    protected void StockList_SelectedIndexChanged(object sender, EventArgs e)
-    {
 
-    }
+
+
+   
 }
