@@ -117,6 +117,7 @@ namespace ClassLibrary
         {
             String Error = "";
             DateTime DateTemp;
+            DateTime Temp;
             if (Address.Length == 0)
             {
                 Error = Error + "The address may not be blank";
@@ -139,7 +140,18 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The date cannot be in the future";
             }
-
+            Temp = Convert.ToDateTime(DatePurchased);
+            if (Temp < DateTime.Now.Date)
+            {
+                //record the error
+                Error = Error + "The date cannot be in the past : ";
+            }
+            //check to see if the date is greater than today's date
+            if (Temp > DateTime.Now.Date)
+            {
+                //record the error
+                Error = Error + "The date cannot be in the future";
+            }
             //return any error messages
             return Error;
 
