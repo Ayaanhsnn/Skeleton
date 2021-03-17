@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace test_Framework
 {
     [TestClass]
-    public class TstStockCollection
+    public class tstStockCollection
     { 
 
         [TestMethod]
@@ -41,9 +41,6 @@ namespace test_Framework
             // test to see two values are same
             Assert.AreEqual(AllStock.StockList, TestList);
             {
-
- 
-
             }
         }
         [TestMethod]
