@@ -7,6 +7,9 @@ namespace ClassLibrary
     {
         //private data member for the list
         List<clsCustomer> mCustomerList = new List<clsCustomer>();
+        //private data member thisCustomer 
+        clsCustomer mThisCustomer = new clsCustomer();
+
         public List<clsCustomer> CustomerList
         {
             get
@@ -34,7 +37,20 @@ namespace ClassLibrary
             }
         }
 
-        public clsCustomer ThisCustomer { get; set; }
+        public clsCustomer ThisCustomer
+        {
+            get
+            {
+                //return the private data
+                return mThisCustomer;
+            }
+            set
+            {
+                //set the private data
+                mThisCustomer = value;
+            }
+        }
+
 
 
        public clsCustomerCollection()
@@ -66,6 +82,32 @@ namespace ClassLibrary
                 //point at the next record
                 Index++;
             }
+        }
+
+        public int Add()
+        {
+            //adds a new record to the database based on the values of mThisCustomer
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@Username", mThisCustomer.Username);
+            DB.AddParameter("@Password", mThisCustomer.Password);
+            DB.AddParameter("@Address", mThisCustomer.Address);
+            DB.AddParameter("@ReceiveMail", mThisCustomer.ReceiveMail);
+            DB.AddParameter("@DateOfBirth", mThisCustomer.DateOfBirth);
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblCustomerDetails_Insert");
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisCustomer
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure 
+            DB.AddParameter("CustomerId", mThisCustomer.CustomerId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomerDetails_Delete");
         }
     }
 }
