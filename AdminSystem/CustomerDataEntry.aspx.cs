@@ -40,10 +40,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnCustomer.Address = Address;
             //capture the dateofbirth
             AnCustomer.DateOfBirth = Convert.ToDateTime(DateOfBirth);
-            //store the customer in the session object
-            Session["AnCustomer"] = AnCustomer;
-            //redirect to the viewer page
-            Response.Write("CustomerViewer.aspx");
+            //create a new instance of the customer collection 
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            //set the ThisCustomer property
+            CustomerList.ThisCustomer = AnCustomer;
+            //add the new record
+            CustomerList.Add();
+            //redirect back to the listpage
+            Response.Redirect("CustomerList.aspx");
+
+            
             
         }
         else
