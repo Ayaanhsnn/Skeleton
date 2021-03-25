@@ -8,10 +8,48 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with page level scope
+    Int32 CustomerId;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the customer to be processed
+        CustomerId = Convert.ToInt32(Session["CustomerId"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (CustomerId != -1)
+            {
+                //display the current data for the record
+                DisplayCustomers();
+            }
+        }
+
+
 
     }
+
+    void DisplayCustomers()
+    {
+        //create an instance of the CustomerBook
+        clsCustomerCollection CustomerBook = new clsCustomerCollection();
+        //find the record to update 
+        CustomerBook.ThisCustomer.Find(CustomerId);
+        //display the data  for this record
+        txtCustomerId.Text = CustomerBook.ThisCustomer.CustomerId.ToString();
+        txtUsername.Text = CustomerBook.ThisCustomer.Username;
+        txtPassword.Text = CustomerBook.ThisCustomer.Password;
+        txtAddress.Text = CustomerBook.ThisCustomer.Address;
+        txtDateOfBirth.Text = CustomerBook.ThisCustomer.DateOfBirth.ToString();
+        chkReceiveMail.Checked = CustomerBook.ThisCustomer.ReceiveMail;
+    }
+
+
+
+
+
+
+
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
@@ -32,6 +70,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnCustomer.Valid(Username, Password, Address, DateOfBirth);
         if (Error == "")
         {
+            //capture the CustomerId
+            AnCustomer.CustomerId = CustomerId;
             //capture the username
             AnCustomer.Username = Username;
             //capture the password
@@ -40,12 +80,31 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnCustomer.Address = Address;
             //capture the dateofbirth
             AnCustomer.DateOfBirth = Convert.ToDateTime(DateOfBirth);
+            //capture receiveMail
+            AnCustomer.ReceiveMail = chkReceiveMail.Checked;
             //create a new instance of the customer collection 
             clsCustomerCollection CustomerList = new clsCustomerCollection();
-            //set the ThisCustomer property
-            CustomerList.ThisCustomer = AnCustomer;
-            //add the new record
-            CustomerList.Add();
+
+            //if this is a new record i.e CustomerId = -1 then add the data
+            if (CustomerId == -1)
+            {
+                //set the ThisCustomer property
+                CustomerList.ThisCustomer = AnCustomer;
+                //add the new record
+                CustomerList.Add();
+
+            }
+            //otherwise it must be an update 
+            else
+            {
+                //find the record to update
+                CustomerList.ThisCustomer.Find(CustomerId);
+                //set the ThisCustomer property 
+                CustomerList.ThisCustomer = AnCustomer;
+                //update the record
+                CustomerList.Update();
+
+            }
             //redirect back to the listpage
             Response.Redirect("CustomerList.aspx");
 
@@ -74,5 +133,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtAddress.Text = AnCustomer.Address;
             txtDateOfBirth.Text = AnCustomer.DateOfBirth.ToString();
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+
     }
 }
