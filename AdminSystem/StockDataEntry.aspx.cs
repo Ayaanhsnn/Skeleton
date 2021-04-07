@@ -27,14 +27,26 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsStock
         clsStock AStock = new clsStock();
-        AStock.StockNo = Convert.ToInt32(txtStockNo.Text);
-        AStock.OrderNo = Convert.ToInt32(txtOrderNo.Text);
-        AStock.StockDescription = txtStockDesc.Text;
-        AStock.DatePurchased = Convert.ToDateTime(txtDatePurch.Text);
-        AStock.Availability = chkAvailability.Checked;
-        AStock.Quantity = Convert.ToInt32(txtQuantity.Text);
-        Session["AStock"] = AStock;
-        Response.Redirect("StockViewer.aspx");
+        string OrderNo = txtOrderNo.Text;
+        string StockDescription = txtStockDesc.Text;
+        string DatePurchased = txtDatePurch.Text;
+        string Quantity = txtQuantity.Text;
+        string Error = "";
+        Error = AStock.Valid(OrderNo, StockDescription, DatePurchased, Quantity);
+        if (Error == "")
+        {
+            AStock.OrderNo = Convert.ToInt32(OrderNo);
+            AStock.StockDescription = StockDescription;
+            AStock.DatePurchased = Convert.ToDateTime(DatePurchased);
+            AStock.Quantity = Convert.ToInt32(Quantity);
+            AStock.Availability = chkAvailability.Checked;
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+        
+        
 
     }
 
@@ -55,4 +67,5 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         }
     }
-}
+
+    }

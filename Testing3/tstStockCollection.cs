@@ -74,11 +74,30 @@ namespace test_Framework
             TestList.Add(TestItem);
             AllStock.StockList = TestList;
             Assert.AreEqual(AllStock.Count, TestList.Count);
+        }
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsStockCollection AllStock = new clsStockCollection();
+            clsStock TestItem = new clsStock();
+            Int32 PrimaryKey = 0;
+            TestItem.Availability = true;
+            TestItem.StockNo = 1;
+            TestItem.OrderNo = 1;
+            TestItem.DatePurchased = DateTime.Now.Date;
+            TestItem.StockDescription = "Small";
+            TestItem.Quantity = 1;
+            AllStock.ThisStock = TestItem;
+            PrimaryKey = AllStock.Add();
+            TestItem.StockNo = PrimaryKey;
+            AllStock.ThisStock.Find(PrimaryKey);
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
+        }
                
         }
 
     }
-}
+
           
     
         

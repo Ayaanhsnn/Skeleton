@@ -29,5 +29,11 @@ public partial class StockList : System.Web.UI.Page
 
 
 
-   
+
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["StockNo"] = -1;
+        Response.Redirect("AStock.aspx");
+    }
 }
