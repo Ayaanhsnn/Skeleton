@@ -22,4 +22,10 @@ public partial class _1_List : System.Web.UI.Page
 
 
     }
+
+    protected void Addbtn_Click(object sender, EventArgs e)
+    {
+        Session["OrderNo"] = -1;
+        Response.Redirect("OrdersDataEntry.aspx");
+    }
 }

@@ -56,6 +56,24 @@ namespace Testing4
             AllOrders.OrderList = TestList;
             Assert.AreEqual(AllOrders.Count, TestList.Count);
         }
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            ClsOrderCollection AllOrders = new ClsOrderCollection();
+            ClsOrder TestItem = new ClsOrder();
+            Int32 PrimaryKey = 0;
+            TestItem.ClothesAvailable = true;
+            TestItem.OrderNo = 1;
+            TestItem.Address = "105 Vancouver Road Leicester";
+            TestItem.DeliveryDate = DateTime.Now.Date;
+            TestItem.DatePurchased = DateTime.Now.Date;
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.OrderNo = PrimaryKey;
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        }
+
 
     }
 }
