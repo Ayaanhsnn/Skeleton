@@ -8,7 +8,7 @@ namespace test_Framework
 {
     [TestClass]
     public class tstStockCollection
-    { 
+    {
 
         [TestMethod]
         public void InstanceOK()
@@ -93,10 +93,87 @@ namespace test_Framework
             AllStock.ThisStock.Find(PrimaryKey);
             Assert.AreEqual(AllStock.ThisStock, TestItem);
         }
-               
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsStockCollection AllStock = new clsStockCollection();
+            clsStock TestItem = new clsStock();
+            Int32 PrimaryKey = 0;
+            TestItem.Availability = true;
+            TestItem.StockNo = 1;
+            TestItem.OrderNo = 1;
+            TestItem.DatePurchased = DateTime.Now.Date;
+            TestItem.StockDescription = "large";
+            TestItem.Quantity = 1;
+            AllStock.ThisStock = TestItem;
+            PrimaryKey = AllStock.Add();
+            TestItem.StockNo = PrimaryKey;
+            AllStock.ThisStock.Find(PrimaryKey);
+            AllStock.Delete();
+            Boolean Found = AllStock.ThisStock.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+        }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsStockCollection AllStock = new clsStockCollection();
+            clsStock TestItem = new clsStock();
+            Int32 PrimaryKey = 0;
+            TestItem.Availability = true;
+            TestItem.StockNo = 1;
+            TestItem.OrderNo = 1;
+            TestItem.DatePurchased = DateTime.Now.Date;
+            TestItem.StockDescription = "small";
+            TestItem.Quantity = 1;
+            AllStock.ThisStock = TestItem;
+            PrimaryKey = AllStock.Add();
+            TestItem.StockNo = PrimaryKey;
+            //modity test data
+            TestItem.Availability = false;
+            TestItem.StockNo = 3;
+            TestItem.OrderNo = 3;
+            TestItem.DatePurchased = DateTime.Now.Date;
+            TestItem.StockDescription = "large";
+            TestItem.Quantity = 3;
+            //set record based on new test data
+            AllStock.ThisStock = TestItem;
+            //update record
+            AllStock.Update();
+            //find the record
+            AllStock.ThisStock.Find(PrimaryKey);
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
+        }
+        [TestMethod]
+        public void ReportByPostCodeMethodOK()
+        {
+            //create an instance of class containing unfiltered results
+            clsStockCollection AllStock = new clsStockCollection();
+            //create an instance of the filtered data
+            clsStockCollection FilteredStock = new clsStockCollection();
+            //blank string to return all records
+            FilteredStock.ReportByPostCode("");
+            //test to see two values are the same
+            Assert.AreEqual(AllStock.Count, FilteredStock.Count);
+        }
+        //[TestMethod]
+        //public void ReportByPostCodeNoneFound()
+        //{
+            //create an instance of the filtered data
+           // clsStockCollection FilteredStock = new clsStockCollection();
+            //apply a postcode that doesn't exist
+            //FilteredStock.ReportByPostCode("xxxx");
+            //test to see that there are no records
+           // Assert.AreEqual(0, FilteredStock.Count);
         }
 
-    }
+        }
+        
+
+
+               
+        
+
+    
 
           
     
