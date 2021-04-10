@@ -8,8 +8,38 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store primary key with page level scope
+    Int32 StockNo;
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get number of address to be processed
+        StockNo = Convert.ToInt32(Session["StockNo"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (StockNo != -1)
+            {
+                //display the current data for the record
+                DisplayStock();
+            }
+        }
+    }
+
+    void DisplayStock()
+    {
+        //create an instance of the stock book
+        clsStockCollection StockBook = new clsStockCollection();
+        //find the record to update
+        StockBook.ThisStock.Find(StockNo);
+        //display the data for this record
+        txtStockNo.Text = StockBook.ThisStock.StockNo.ToString();
+        txtOrderNo.Text = StockBook.ThisStock.OrderNo.ToString();
+        txtStockDesc.Text = StockBook.ThisStock.StockDescription;
+        txtDatePurch.Text = StockBook.ThisStock.DatePurchased.ToString();
+        txtQuantity.Text = StockBook.ThisStock.Quantity.ToString();
+        chkAvailability.Checked = StockBook.ThisStock.Availability;
 
     }
 
@@ -35,18 +65,40 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AStock.Valid(OrderNo, StockDescription, DatePurchased, Quantity);
         if (Error == "")
         {
+            AStock.StockNo = StockNo;
             AStock.OrderNo = Convert.ToInt32(OrderNo);
             AStock.StockDescription = StockDescription;
             AStock.DatePurchased = Convert.ToDateTime(DatePurchased);
             AStock.Quantity = Convert.ToInt32(Quantity);
             AStock.Availability = chkAvailability.Checked;
+            //create a new instance of stock collection
+            clsStockCollection StockList = new clsStockCollection();
+
+            //if this is a new record - e.g. StockNo = -1 then add data
+            if (StockNo == -1)
+            {
+                //set the ThisStock property
+                StockList.ThisStock = AStock;
+                //add new record
+                StockList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                StockList.ThisStock.Find(StockNo);
+                StockList.ThisStock = AStock;
+                StockList.Update();
+            }
+            //redirect back to the listpage
+            Response.Redirect("StockList.aspx");
         }
         else
         {
+            //display the error message
             lblError.Text = Error;
         }
-        
-        
+            
 
     }
 

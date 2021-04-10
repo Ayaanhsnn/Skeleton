@@ -89,6 +89,39 @@ namespace ClassLibrary
             return DB.Execute("sproc_tblStock_Insert");
 
         }
+
+        public void Delete()
+        {
+            //deletes record pointed to by thisStock
+            //connects to database
+            clsDataConnection DB = new clsDataConnection();
+            //sets parameter for stored procedure
+            DB.AddParameter("@StockNo", mThisStock.StockNo);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_Delete");
+        }
+
+        public void Update()
+        {
+            //update existing record based on thisStock values
+            //connect to database
+            clsDataConnection DB = new clsDataConnection();
+            //set parameters for stored procedure
+            DB.AddParameter("StockNo", mThisStock.StockNo);
+            DB.AddParameter("OrderNo", mThisStock.OrderNo);
+            DB.AddParameter("StockDescription", mThisStock.StockDescription);
+            DB.AddParameter("DatePurchased", mThisStock.DatePurchased);
+            DB.AddParameter("Quantity", mThisStock.Quantity);
+            DB.AddParameter("Availability", mThisStock.Availability);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_Update");
+
+        }
+
+        public void ReportByPostCode(string PostCode)
+        {
+            //filters records based on a full or partical post code
+        }
     }
             
     }
