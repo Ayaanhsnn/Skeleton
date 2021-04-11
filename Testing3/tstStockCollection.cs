@@ -144,35 +144,48 @@ namespace test_Framework
             Assert.AreEqual(AllStock.ThisStock, TestItem);
         }
         [TestMethod]
-        public void ReportByPostCodeMethodOK()
+        public void ReportByStockDescriptionMethodOK()
         {
-            //create an instance of class containing unfiltered results
             clsStockCollection AllStock = new clsStockCollection();
-            //create an instance of the filtered data
             clsStockCollection FilteredStock = new clsStockCollection();
-            //blank string to return all records
-            FilteredStock.ReportByPostCode("");
-            //test to see two values are the same
+            FilteredStock.ReportByStockDescription("");
             Assert.AreEqual(AllStock.Count, FilteredStock.Count);
         }
-        //[TestMethod]
-        //public void ReportByPostCodeNoneFound()
-        //{
-            //create an instance of the filtered data
-           // clsStockCollection FilteredStock = new clsStockCollection();
-            //apply a postcode that doesn't exist
-            //FilteredStock.ReportByPostCode("xxxx");
-            //test to see that there are no records
-           // Assert.AreEqual(0, FilteredStock.Count);
-        }
+
+        [TestMethod]
+        public void ReportByStockDescriptionNoneFound()
+        {
+            clsStockCollection FilteredStock = new clsStockCollection();
+            FilteredStock.ReportByStockDescription("xxxx");
+            Assert.AreEqual(0, FilteredStock.Count);
 
         }
+        [TestMethod]
+        public void ReportByStockDescriptionTestDataFound()
+        {
+            clsStockCollection FilteredStock = new clsStockCollection();
+            Boolean OK = true;
+            FilteredStock.ReportByStockDescription("yyy yyy");
+            if (FilteredStock.Count == 2)
+            {
+                if (FilteredStock.StockList[0].StockNo != 1)
+                {
+                    OK = false;
+                }
+                if (FilteredStock.StockList[1].StockNo != 21)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsFalse(OK);
+            }
+        }
+}
         
-
-
-               
-        
-
     
 
           

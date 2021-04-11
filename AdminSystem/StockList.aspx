@@ -19,6 +19,15 @@
             <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" />
         </p>
         <p>
+            Enter a stock description&nbsp;
+            <asp:TextBox ID="txtstockdescription" runat="server"></asp:TextBox>
+        </p>
+        <p>
+            <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" Text="Apply" />
+&nbsp;<asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" style="margin-left: 9px" Text="Clear" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </p>
+        <p>
             <asp:Label ID="lblError" runat="server" Text="[lblError]"></asp:Label>
         </p>
     </form>
