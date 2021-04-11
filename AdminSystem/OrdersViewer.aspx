@@ -8,7 +8,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        ClsOrder AnOrder = new ClsOrder();
+        clsOrder AnOrder = new clsOrder();
         AnOrder = (ClsOrder) Session["AnOrder"];
         Response.Write(AnOrder.Address);
         Response.Write(AnOrder.ClothesAvailable);

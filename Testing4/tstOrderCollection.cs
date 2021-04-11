@@ -59,7 +59,7 @@ namespace Testing4
         [TestMethod]
         public void AddMethodOK()
         {
-            ClsOrderCollection AllOrders = new ClsOrderCollection();
+            clsOrderCollection AllOrders = new clsOrderCollection();
             ClsOrder TestItem = new ClsOrder();
             Int32 PrimaryKey = 0;
             TestItem.ClothesAvailable = true;
@@ -73,7 +73,49 @@ namespace Testing4
             AllOrders.ThisOrder.Find(PrimaryKey);
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
         }
-
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrder TestItem = new clsOrder();
+            Int32 PrimaryKey = 0;
+            TestItem.ClothesAvailable = true;
+            TestItem.OrderNo = 1;
+            TestItem.Address = "105 Vancouver Road Leicester";
+            TestItem.DeliveryDate = DateTime.Now.Date;
+            TestItem.DatePurchased = DateTime.Now.Date;
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.OrderNo = PrimaryKey;
+            TestItem.ClothesAvailable = false;
+            TestItem.OrderNo = 3;
+            TestItem.Address = "21 Oxford Street Leicester";
+            TestItem.DeliveryDate = DateTime.Now.Date;
+            TestItem.DatePurchased = DateTime.Now.Date;
+            AllOrders.ThisOrder = TestItem;
+            AllOrders.Update();
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrder TestItem = new clsOrder();
+            Int32 PrimaryKey = 0;
+            TestItem.ClothesAvailable = true;
+            TestItem.OrderNo = 1;
+            TestItem.Address = "105 Vancouver Road Leicester";
+            TestItem.DeliveryDate = DateTime.Now.Date;
+            TestItem.DatePurchased = DateTime.Now.Date;
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.OrderNo = PrimaryKey;
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            AllOrders.Delete();
+            Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+        }
 
     }
 }
