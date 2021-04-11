@@ -18,7 +18,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsCustomer
         //navigate to the viewer page)
-        ClsOrder AnOrder = new ClsOrder();
+        clsOrder AnOrder = new clsOrder();
         string Address = txtAddress.Text;
         string DatePurchased = txtDatePurchased.Text;
         string DeliveryDate = txtDeliveryDate.Text;
@@ -29,8 +29,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.Address = Address;
             AnOrder.DeliveryDate = Convert.ToDateTime(DeliveryDate);
             AnOrder.DatePurchased = Convert.ToDateTime(DatePurchased);
-            Session["AnOrder"] = AnOrder;
-            Response.Redirect("OrdersViewer.aspx");
+            AnOrder.ClothesAvailable = chkClothesAvailable.Checked;
+            clsOrderCollection OrderList = new clsOrderCollection();
+            if (OrderNo == -1)
+            {
+                OrderList.ThisOrder = AnOrder;
+                OrderList.Add();
+            }
+            else
+            {
+                OrderList.ThisOrder.Find(OrderNo);
+                OrderList.ThisOrder = AnOrder;
+                OrderList.Update();
+            }
+            Response.Redirect("OrdersList.aspx");
+
         }
         else 
         {
@@ -43,7 +56,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void Find_Click(object sender, EventArgs e)
     {
-        ClsOrder AnOrder = new ClsOrder();
+        clsOrder AnOrder = new clsOrder();
         Int32 OrderNo;
         Boolean Found = false;
         OrderNo = Convert.ToInt32(txtOrderNo.Text);

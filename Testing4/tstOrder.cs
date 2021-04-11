@@ -14,7 +14,7 @@ namespace Testing4
         [TestMethod]
         public void ValidMethodOK()
         {
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             String Error = "";
             Error = AnOrder.Valid(Address, DeliveryDate, DatePurchased);
             Assert.AreEqual(Error, "");
@@ -22,14 +22,14 @@ namespace Testing4
         [TestMethod]
         public void InstanceOK()
         {
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             Assert.IsNotNull(AnOrder);
         }
         [TestMethod]
         public void ClothesAvailablePropertyOK()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
             Boolean TestData = true;
             //assign the data to the property
@@ -42,7 +42,7 @@ namespace Testing4
         public void DatePurchasedPropertyOK()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
             DateTime TestData = DateTime.Now.Date;
             //assign the data to the property
@@ -55,7 +55,7 @@ namespace Testing4
         public void DeliveryDatePropertyOK()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
             DateTime TestData = DateTime.Now.Date;
             //assign the data to the property
@@ -68,7 +68,7 @@ namespace Testing4
         public void OrderNoPropertyOK()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
             Int32 TestData = 1;
             //assign the data to the property
@@ -84,7 +84,7 @@ namespace Testing4
         public void AddressPropertyOK()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
             string TestData = "105 Lincon Street Leicester";
             //assign the data to the property
@@ -97,7 +97,7 @@ namespace Testing4
         public void FindMethodOK()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //boolean variable to store the result of the validation
             Boolean Found = false;
             //create some test data to use with the method
@@ -112,7 +112,7 @@ namespace Testing4
         public void TestOrderNoFound()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //boolean variable to store the result of the search
             Boolean Found = false;
             //boolean variable to record if data is OK (assume it is)
@@ -134,7 +134,7 @@ namespace Testing4
         public void TestAddressFound()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //boolean variable to store the result of the search
             Boolean Found = false;
             //boolean variable to record if data is OK (assume it is)
@@ -156,7 +156,7 @@ namespace Testing4
         public void TestDatePurchasedFound()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //boolean variable to store the result of the search
             Boolean Found = false;
             //boolean variable to record if data is OK (assume it is)
@@ -178,7 +178,7 @@ namespace Testing4
         public void TestDeliveryDateFound()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //boolean variable to store the result of the search
             Boolean Found = false;
             //boolean variable to record if data is OK (assume it is)
@@ -199,7 +199,7 @@ namespace Testing4
         public void TestClothesAvailableFound()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //boolean variable to store the result of the search
             Boolean Found = false;
             //boolean variable to record if data is OK (assume it is)
@@ -219,7 +219,7 @@ namespace Testing4
         [TestMethod]
         public void AddressMinLessOne()
         {
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             String Error = "";
             String Address = "";
             Error = AnOrder.Valid(Address, DeliveryDate, DatePurchased);
@@ -229,7 +229,7 @@ namespace Testing4
         public void AddressMin()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
             String Error = "";
             //this should pass
@@ -244,7 +244,7 @@ namespace Testing4
         public void AddressMinPlusOne()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
             String Error = "";
             //this should pass
@@ -260,7 +260,7 @@ namespace Testing4
         public void AddressMaxLessOne()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
             String Error = "";
             //this should pass
@@ -276,7 +276,7 @@ namespace Testing4
         public void AddressMax()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
             String Error = "";
             //this should pass
@@ -292,7 +292,7 @@ namespace Testing4
         public void AddressMaxPlusOne()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
             String Error = "";
             //this shold fail
@@ -309,7 +309,7 @@ namespace Testing4
         public void AddressMid()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
             String Error = "";
             //this should pass
@@ -324,7 +324,7 @@ namespace Testing4
         public void DeliveryDateExtremeMin()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
             String Error = "";
             //create a variable to store the test date data
@@ -345,7 +345,7 @@ namespace Testing4
         public void DeliveryDateMinLessOne()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
             String Error = "";
             //create a variable to store the test date data
@@ -366,7 +366,7 @@ namespace Testing4
         public void DeliveryDateMin()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
             String Error = "";
             //create a variable to store the test date data
@@ -384,7 +384,7 @@ namespace Testing4
         public void DeliveryDateMinPlusOne()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
             String Error = "";
             //create a variable to store the test date data
@@ -405,7 +405,7 @@ namespace Testing4
         public void DeliveryDateExtremeMax()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
             String Error = "";
             //create a variable to store the test date data
@@ -426,7 +426,7 @@ namespace Testing4
         public void DatePurchasedExtremeMin()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
             String Error = "";
             //create a variable to store the test date data
@@ -447,7 +447,7 @@ namespace Testing4
         public void DatePurchasedMinLessOne()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
             String Error = "";
             //create a variable to store the test date data
@@ -468,7 +468,7 @@ namespace Testing4
         public void DatePurchasedMin()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
             String Error = "";
             //create a variable to store the test date data
@@ -486,7 +486,7 @@ namespace Testing4
         public void DatePurchasedMinPlusOne()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
             String Error = "";
             //create a variable to store the test date data
@@ -507,7 +507,7 @@ namespace Testing4
         public void DatePurchasedExtremeMax()
         {
             //create an instance of the class we want to create
-            ClsOrder AnOrder = new ClsOrder();
+            clsOrder AnOrder = new clsOrder();
             //string variable to store any error message
             String Error = "";
             //create a variable to store the test date data

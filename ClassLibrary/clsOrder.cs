@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ClassLibrary
 {
-    public class ClsOrder
+    public class clsOrder
     {
 
         //private data member for active
