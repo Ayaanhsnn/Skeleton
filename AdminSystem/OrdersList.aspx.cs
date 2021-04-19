@@ -19,10 +19,13 @@ public partial class _1_List : System.Web.UI.Page
     }
     void DisplayOrders()
     {
-        clsOrderCollection Orders = new clsOrderCollection();
-        lstOrders.DataSource = Orders.OrderList;
+        clsOrderCollection Address = new clsOrderCollection();
+        lstOrderList.DataSource = Address.OrderList;
+        lstOrderList.DataValueField = "OrderNo";
+        lstOrderList.DataTextField = "Address";
+        lstOrderList.DataBind();
 
-        
+
 
 
     }
@@ -71,5 +74,30 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = " Please select the record to delete from the list";
         }
 
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsOrderCollection Address = new clsOrderCollection();
+        Address.ReportByAddress(txtAddress.Text);
+        lstOrderList.DataSource = Address.OrderList;
+        //set name of primary key
+        lstOrderList.DataValueField = "OrderNo";
+        //set the name of field to display
+        lstOrderList.DataTextField = "Address";
+        //bind data to list
+        lstOrderList.DataBind();
+
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsOrderCollection Address = new clsOrderCollection();
+        Address.ReportByAddress("");
+        txtAddress.Text = "";
+        lstOrderList.DataSource = Address.OrderList;
+        lstOrderList.DataValueField = "OrderNo";
+        lstOrderList.DataTextField = "Address";
+        lstOrderList.DataBind();
     }
 }
