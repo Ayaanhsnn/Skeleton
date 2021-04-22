@@ -128,7 +128,7 @@ namespace Testing4
         public void ReportByAddressNoneFound()
         {
             clsOrderCollection FilteredAddress = new clsOrderCollection();
-            FilteredAddress.ReportByAddress("108 twinkle Street");
+            FilteredAddress.ReportByAddress("xxxx");
             Assert.AreEqual(0, FilteredAddress.Count);
         }
         [TestMethod]
@@ -136,7 +136,7 @@ namespace Testing4
         {
             clsOrderCollection FilteredAddress = new clsOrderCollection();
             Boolean OK = true;
-            FilteredAddress = ReportByAddress(" 89 pink street leicester");
+            FilteredAddress.ReportByAddress(" 89 pink street leicester");
             if (FilteredAddress.Count == 2)
             {
                 if (FilteredAddress.OrderList[0].OrderNo != 1)
