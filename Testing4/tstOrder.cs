@@ -112,7 +112,7 @@ namespace Testing4
         public void TestOrderNoFound()
         {
             //create an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
+            clsOrder AOrder = new clsOrder();
             //boolean variable to store the result of the search
             Boolean Found = false;
             //boolean variable to record if data is OK (assume it is)
@@ -120,9 +120,9 @@ namespace Testing4
             //create some test data to use with the method
             Int32 OrderNo = 1;
             //invoke the method
-            Found = AnOrder.Find(OrderNo);
+            Found = AOrder.Find(OrderNo);
             //check the address no
-            if (AnOrder.OrderNo != 1)
+            if (AOrder.OrderNo != 1)
             {
                 OK = false;
             }
@@ -134,7 +134,7 @@ namespace Testing4
         public void TestAddressFound()
         {
             //create an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
+            clsOrder AOrder = new clsOrder();
             //boolean variable to store the result of the search
             Boolean Found = false;
             //boolean variable to record if data is OK (assume it is)
@@ -142,9 +142,9 @@ namespace Testing4
             //create some test data to use with the method
             Int32 OrderNo = 1;
             //invoke the method
-            Found = AnOrder.Find(OrderNo);
+            Found = AOrder.Find(OrderNo);
             //check the property
-            if (AnOrder.Address != "105 Vancouver Road Leicester")
+            if (AOrder.Address != "105 Vancouver Road Leicester")
             {
                 OK = false;
             }
@@ -156,7 +156,7 @@ namespace Testing4
         public void TestDatePurchasedFound()
         {
             //create an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
+            clsOrder AOrder = new clsOrder();
             //boolean variable to store the result of the search
             Boolean Found = false;
             //boolean variable to record if data is OK (assume it is)
@@ -164,9 +164,9 @@ namespace Testing4
             //create some test data to use with the method
             Int32 OrderNo = 1;
             //invoke the method
-            Found = AnOrder.Find(OrderNo);
+            Found = AOrder.Find(OrderNo);
             //check the property
-            if (AnOrder.DatePurchased != Convert.ToDateTime("12/02/2021"))
+            if (AOrder.DatePurchased != Convert.ToDateTime("12/02/2021"))
             {
                 OK = false;
             }
@@ -178,7 +178,7 @@ namespace Testing4
         public void TestDeliveryDateFound()
         {
             //create an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
+            clsOrder AOrder = new clsOrder();
             //boolean variable to store the result of the search
             Boolean Found = false;
             //boolean variable to record if data is OK (assume it is)
@@ -186,9 +186,9 @@ namespace Testing4
             //create some test data to use with the method
             Int32 OrderNo = 1;
             //invoke the method
-            Found = AnOrder.Find(OrderNo);
+            Found = AOrder.Find(OrderNo);
             //check the property
-            if (AnOrder.DeliveryDate != Convert.ToDateTime("15/02/2021"))
+            if (AOrder.DeliveryDate != Convert.ToDateTime("15/02/2021"))
             {
                 OK = false;
             }
@@ -199,7 +199,7 @@ namespace Testing4
         public void TestClothesAvailableFound()
         {
             //create an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
+            clsOrder AOrder = new clsOrder();
             //boolean variable to store the result of the search
             Boolean Found = false;
             //boolean variable to record if data is OK (assume it is)
@@ -207,9 +207,9 @@ namespace Testing4
             //create some test data to use with the method
             Int32 OrderNo = 1;
             //invoke the method
-            Found = AnOrder.Find(OrderNo);
+            Found = AOrder.Find(OrderNo);
             //check the property
-            if (AnOrder.ClothesAvailable != true)
+            if (AOrder.ClothesAvailable != true)
             {
                 OK = false;
             }
