@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Testing4
 {
     [TestClass]
-    public class tstOrderCollection
+    public class TstOrderCollection
     {
         [TestMethod]
         public void InstanceOK()
