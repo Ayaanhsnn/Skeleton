@@ -155,7 +155,7 @@ namespace ClassLibrary
             // quantity
             Int32 QuantityTemp;
 
-            QuantityTemp = Convert.ToInt32(orderNo);
+            QuantityTemp = Convert.ToInt32(quantity);
             if (QuantityTemp < 0)
             {
                 Error = Error + "The quantity can not be below 0";
