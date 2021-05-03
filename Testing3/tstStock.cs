@@ -399,7 +399,7 @@ namespace Testing3
             QuantityTemp = QuantityTemp - 1;
             String Quantity = QuantityTemp.ToString();
             Error = AStock.Valid(OrderNo, StockDescription, DatePurchased, Quantity);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void QuantityMin()
@@ -458,7 +458,7 @@ namespace Testing3
             QuantityTemp = QuantityTemp + 1;
             String Quantity = QuantityTemp.ToString();
             Error = AStock.Valid(OrderNo, StockDescription, DatePurchased, Quantity);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
 
 
 

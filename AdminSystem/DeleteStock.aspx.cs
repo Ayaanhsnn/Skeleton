@@ -25,6 +25,8 @@ public partial class DeleteStock : System.Web.UI.Page
             clsStockCollection StockBook = new clsStockCollection();
             //find record to delete
             StockBook.ThisStock.Find(StockNo);
+            //delete the record
+            StockBook.Delete();
             //redirect back to the main page
             Response.Redirect("StockList.aspx");
         }
